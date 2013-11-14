@@ -20,6 +20,24 @@
 
 Input="$@"
 
+Suffix=$(echo "$Input" | awk -F '.' '{print $NF}')
+
+if [ "$Suffix" = "mp3" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "flac" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "aac" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "mp4" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "mkv" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "wmp" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "ogg" ]; then
+ Lyrics=$(echo "$Input" | basename "$Input" $Suffix)
+fi
+
 Lyrics=$(echo "$Input" | sed -e "s|(||g" | sed -e "s|)||g" | sed -e "s|-||g" | sed -e "s|[0-9]||g" | sed -e "s|_||g" | sed -e "s|~||g" | sed -e "s|\.||g" | sed -e "s|,||g" | sed -e "s|\[||g" | sed -e "s|\]||g" | sed -e "s|\}||g" | sed -e "s|%||g" | sed -e "s|@||g" | sed -e "s|#||g")
 
 exec /usr/bin/search-all-the-things-Lyrics "$Lyrics" &

@@ -20,6 +20,22 @@
 
 Input="$@"
 
+if [ "$Suffix" = "mp3" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "flac" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "aac" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "mp4" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "mkv" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "wmp" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+elif [ "$Suffix" = "ogg" ]; then
+ Movie=$(echo "$Input" | basename "$Input" $Suffix)
+fi
+
 Movie=$(echo "$Input" | sed -e "s|(||g" | sed -e "s|)||g" | sed -e "s|-||g" | sed -e "s|[0-9]||g" | sed -e "s|_||g" | sed -e "s|~||g" | sed -e "s|\.||g" | sed -e "s|,||g" | sed -e "s|\[||g" | sed -e "s|\]||g" | sed -e "s|\}||g" | sed -e "s|%||g" | sed -e "s|@||g" | sed -e "s|#||g")
 
 exec /usr/bin/search-all-the-things-MovieFanatic "$Movie" &
